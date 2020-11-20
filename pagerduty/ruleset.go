@@ -106,18 +106,25 @@ type ListRulesetRulesResponse struct {
 
 // RuleActions represents a rule action
 type RuleActions struct {
-	Suppress    *RuleActionSuppress     `json:"suppress,omitempty"`
-	Annotate    *RuleActionParameter    `json:"annotate,omitempty"`
-	Severity    *RuleActionParameter    `json:"severity,omitempty"`
-	Priority    *RuleActionParameter    `json:"priority,omitempty"`
-	Route       *RuleActionParameter    `json:"route,omitempty"`
-	EventAction *RuleActionParameter    `json:"event_action,omitempty"`
-	Extractions []*RuleActionExtraction `json:"extractions,omitempty"`
+	Suppress    *RuleActionSuppress         `json:"suppress,omitempty"`
+	Annotate    *RuleActionParameter        `json:"annotate,omitempty"`
+	Severity    *RuleActionParameter        `json:"severity,omitempty"`
+	Suspend     *RuleActionIntegerParameter `json:"suspend,omitempty"`
+	Priority    *RuleActionParameter        `json:"priority,omitempty"`
+	Route       *RuleActionParameter        `json:"route,omitempty"`
+	EventAction *RuleActionParameter        `json:"event_action,omitempty"`
+	Extractions []*RuleActionExtraction     `json:"extractions,omitempty"`
 }
 
 // RuleActionParameter represents a generic parameter object on a rule action
 type RuleActionParameter struct {
 	Value string `json:"value,omitempty"`
+}
+
+// RuleActionIntegerParameter represents a generic parameter object on a rule
+// action that requires type int instead of string
+type RuleActionIntegerParameter struct {
+	Value int `json:"value,omitempty"`
 }
 
 // RuleActionSuppress represents a rule suppress action object
